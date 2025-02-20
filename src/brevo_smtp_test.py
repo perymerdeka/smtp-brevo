@@ -1,10 +1,17 @@
 import smtplib
-from email.mime.multipart import MIMEMultipart
-from email.mime.text import MIMEText
-from dotenv import load_dotenv
 import os
 
-load_dotenv()
+
+from email.mime.multipart import MIMEMultipart
+from email.mime.text import MIMEText
+from dotenv import load_dotenv, dotenv_values
+from pathlib import Path
+
+BASE_DIR = Path(__file__).resolve().parent.parent
+ENV_PATH = BASE_DIR / ".env"
+print(dotenv_values(ENV_PATH))
+load_dotenv(ENV_PATH)
+
 
 # Konfigurasi SMTP Brevo
 smtp_server   = os.getenv("SMTP_HOST")
